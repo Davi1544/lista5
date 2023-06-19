@@ -4,6 +4,9 @@
     $sql = "SELECT * FROM agenda where id_agenda = $id_agenda";
     $res = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($res);
+
+    $displayImg = "block";
+    if($row['foto'] == '') $displayImg = "none";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +30,7 @@
     </style>
 </head>
 <body>
-    <img width="50px" height="50px" src="<?php echo $row['foto']; ?>" alt="" srcset="">
+    <img width="50px" height="50px" src="<?php echo $row['foto']; ?>" alt="" srcset="" style="display: <?php echo $displayImg; ?> ;">
     <form action="altera_agenda_exe.php" method="post" enctype="multipart/form-data" enctype="multipart/form-data">
         <input type="text" name="nome" class="form-control" placeholder="nome" id="" value="<?php echo $row['nome']?>"><br>
         <input type="text" name="apelido" class="form-control" placeholder="apelido" id="" value="<?php echo $row['apelido']?>"><br>

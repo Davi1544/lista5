@@ -20,9 +20,6 @@
                     $row = mysqli_fetch_array($result);
 
                     mysqli_close($con);
-
-                    if(isset($row['foto']) && $row['foto'] != '')$to_show = "<img width='50px' height='50px' src='".$row['foto']."'>";
-                    else $to_show = '';
                 ?>
             <!--<a href="index.php" class="p-2 col-2"><button type="button" class="btn-close" disabled aria-label="Close"></button></a>-->
         
@@ -46,6 +43,8 @@
                 <tbody>
                     <?php
                         foreach($result as $key => $row){
+                            if(isset($row['foto']) && $row['foto'] != '')$to_show = "<img width='50px' height='50px' src='".$row['foto']."'>";
+                            else $to_show = '';
                             echo "<tr scope='row'>";
                             echo "<td>".$row['nome']."</td>";
                             echo "<td>".$row['apelido']."</td>";
